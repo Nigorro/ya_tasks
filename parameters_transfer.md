@@ -12,7 +12,8 @@
 `XMLHttpRequest` может работать с данными в любом текстовом формате (`XML`, `HTML`, `JSON`).
 
 Функция создания `XMLHttpRequest`:
-`function getXmlHttp(){
+``` js
+function getXmlHttp(){
   var xmlhttp;
   try {
     xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
@@ -27,4 +28,5 @@
     xmlhttp = new XMLHttpRequest();
   }
   return xmlhttp;
-}`
+}
+```
