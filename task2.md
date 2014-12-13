@@ -4,7 +4,7 @@
 ``` js 
 
 
-function  functionByFrequencyCalls(func , delay, count){
+function  funcByFrequencyCalls(func , delay, count){
 	if ( !(func && func.constructor && func.call && func.apply)) {
 		alert(func+' is not a function! =(');
 	};
@@ -35,7 +35,7 @@ function  functionByFrequencyCalls(func , delay, count){
 function consoleLog(){
 	consoleLog('foo poo');
 }
-var test = functionByFrequencyCalls(consoleLog, 10000, 4);
+var test = funcByFrequencyCalls(consoleLog, 10000, 4);
 
 test();
 ```
