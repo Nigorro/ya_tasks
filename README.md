@@ -101,3 +101,84 @@ $(function() {
 			})
          });
 ```
+
+``` js
+<% if @id == '0': %>
+	<script type="text/javascript" id='jscript'>
+		$(function() { 
+				$('#bgimage').css('background', '<%= @url %>   no-repeat fixed');
+				$('#bgimage').css('background-position', '50%');
+				$('#bgimage').css('background-size', '100%');
+
+				$('.layout').css( '-webkit-box-shadow', '<%= @sh_opacity %>');
+                $('.layout').css( '-moz-box-shadow', '<%= @sh_opacity %>');
+                $('.layout').css( 'box-shadow', '<%= @sh_opacity %>');
+                $('.layout').css( 'background-color', '<%= @l_opacity %>');               
+		 });
+	</script>
+<% else if @id == '1': %>
+ 	<script type="text/javascript" id='jscript'>
+		$(function() {
+				$('#bgimage').css('background', '<%= @url %> ');
+				$('.layout').css( '-webkit-box-shadow', '<%= @sh_opacity %>');
+                $('.layout').css( '-moz-box-shadow', '<%= @sh_opacity %>');
+                $('.layout').css( 'box-shadow', '<%= @sh_opacity %>');
+                $('.layout').css( 'background-color', '<%= @l_opacity %>');
+		 });
+	</script>
+<% else if @id >= '2': %>
+ 	<script type="text/javascript" id='jscript'>
+		$(function() {
+				$('#bgimage').css('background', 'url(/static/img/onepage/background/<%= @id %>.png )');
+				$('.layout').css( '-webkit-box-shadow', '<%= @sh_opacity %>');
+                $('.layout').css( '-moz-box-shadow', '<%= @sh_opacity %>');
+                $('.layout').css( 'box-shadow', '<%= @sh_opacity %>');
+                $('.layout').css( 'background-color', '<%= @l_opacity %>'); 
+		 });
+	</script>
+<% end %>
+
+```
+
+``` js 
+$(function() {
+                $('.imgbox img').css('border','solid 2px #fff');   
+                $('.controls').css('margin-left','0');
+                $('.imgbox').css('height', '65px');
+                $('.imgbox').css('padding-bottom', '15px');
+                $('#layout_opacity').change( function() {
+                   
+                    var op ='rgba(255, 255, 255,' + this.value/100 +')';
+                    $('#layout').css( 'background-color', op);
+                    $('#value').text(this.value+'%');
+                });
+
+                $('#shadow_opacity').change( function() {
+                    var op ='0px 4px 5px rgba(0, 0, 0,' + this.value/100 +')';
+                    $('#layout').css( '-webkit-box-shadow', op);
+                    $('#layout').css( '-moz-box-shadow', op);
+                    $('#layout').css( 'box-shadow', op);
+                    $('#value_shadow').text(this.value+'%');
+                });
+                $('#bgimage').change(function(){
+                    $('.imgbox img').css('border','solid 2px #fff');
+                    var url = 'url(' + $('#bgimage').val() + ')';
+                    if ($('#bgimage').val()[0] == '#'){
+                        $(box).css('backgroundImage', 'none');
+                        $(box).css('background-color', $('#bgimage').val());
+                    }
+                    else {
+                        $(box).css('backgroundImage', url);
+                    };
+                });
+                $('.imgbox img').on("click", function(){
+                        $('.imgbox img').css('border','solid 2px #fff');    
+                        $(this).css('border','solid 2px #00A75D');
+                        var id = $(this).attr("id");
+                        var url = '/static/img/onepage/background/' + id + '.png';
+                        $('#bgimage').val(url);
+                        $("input:radio[value='1']").attr('checked', true);
+                        $(box).css('backgroundImage', 'url(/static/img/onepage/background/' + id + '.png)');
+                });               
+         });
+```
