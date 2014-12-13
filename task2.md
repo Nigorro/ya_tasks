@@ -35,9 +35,9 @@ function  functionByFrequencyCalls(func , delay, count){
 function consoleLog(){
 	consoleLog('foo poo');
 }
-var exp = functionByFrequencyCalls(consoleLog, 10000, 4);
+var test = functionByFrequencyCalls(consoleLog, 10000, 4);
 
-exp();
+test();
 ```
 
 
