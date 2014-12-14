@@ -19,10 +19,10 @@ function findNumbers(array, target){
 			result.push([item]);
 			continue;
 		}
-		var subResults = findNumbers(array.slice(i+1), target - item);
-		if(!subResults.length) continue;
-		for (var j = 0, len = subResults.length; j < len; j++) {
-			result.push([item].concat(subResults[j]));
+		var temp = findNumbers(array.slice(i+1), target - item);
+		if(!temp.length) continue;
+		for (var j = 0, len = temp.length; j < len; j++) {
+			result.push([item].concat(temp[j]));
 		};
 	};
 	return result;
